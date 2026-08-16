@@ -3,12 +3,12 @@ function enviarResumenWhatsApp(elecciones, numeroTelefono) {
         ? elecciones.actividades.join(', ') 
         : 'Por definir';
 
-    const mensaje = `¡Hola! Ya armé el plan de nuestra cita:%0A%0A` +
-        `🍔 *Comida:* ${elecciones.comida}%0A` +
-        `📅 *Día:* ${elecciones.fecha}%0A` +
-        `⏰ *Hora:* ${elecciones.hora}%0A` +
+    const textoMensaje = `¡Hola! Ya armé el plan de nuestra cita:%0A%0A` +
+        `🍔 *Comida:* ${elecciones.comida || 'Por definir'}%0A` +
+        `📅 *Día:* ${elecciones.fecha || 'Por definir'}%0A` +
+        `⏰ *Hora:* ${elecciones.hora || 'Por definir'}%0A` +
         `🎯 *Actividades:* ${actividadesTexto}`;
 
-    const url = `https://api.whatsapp.com/send?phone=${numeroTelefono}&text=${mensaje}`;
-    window.open(url, '_blank');
+    const url = `https://api.whatsapp.com/send?phone=${numeroTelefono}&text=${textoMensaje}`;
+    window.location.href = url;
 }

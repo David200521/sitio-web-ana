@@ -1,36 +1,41 @@
 function generarPDF(elecciones) {
-    const contenedor = document.createElement('div');
-    contenedor.style.padding = '30px';
-    contenedor.style.fontFamily = "'Segoe UI', Roboto, sans-serif";
-    contenedor.style.color = '#333';
-
+    const ventanaImpresion = window.open('', '', 'width=800,height=600');
+    
     const actividadesHTML = elecciones.actividades.length > 0 
-        ? elecciones.actividades.map(act => `<li style="margin-bottom: 5px;">${act}</li>`).join('')
+        ? elecciones.actividades.map(act => `<li>${act}</li>`).join('')
         : '<li>Por definir</li>';
 
-    contenedor.innerHTML = `
-        <div style="text-align: center; border-bottom: 2px solid #d63384; padding-bottom: 15px; margin-bottom: 20px;">
-            <h1 style="color: #d63384; margin: 0; font-size: 24px;">✨ Resumen de la Cita ✨</h1>
-            <p style="color: #666; margin-top: 5px;">¡Plan confirmado!</p>
-        </div>
-        <div style="font-size: 16px; line-height: 1.8;">
-            <p><strong>🍔 Comida elegida:</strong> ${elecciones.comida || 'Sin especificar'}</p>
-            <p><strong>📅 Día:</strong> ${elecciones.fecha || 'Sin especificar'}</p>
-            <p><strong>⏰ Hora:</strong> ${elecciones.hora || 'Sin especificar'}</p>
-            <p><strong>🎯 Actividades planeadas:</strong></p>
-            <ul style="padding-left: 20px;">
-                ${actividadesHTML}
-            </ul>
-        </div>
-    `;
-
-    const configuracion = {
-        margin: 0.5,
-        filename: 'cita_confirmada.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2 },
-        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-    };
-
-    html2pdf().set(configuracion).from(contenedor).save();
+    ventanaImpresion.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Cita Confirmada</title>
+            <style>
+                body { font-family: Arial, sans-serif; padding: 40px; color: #333; }
+                .card { border: 2px solid #d63384; border-radius: 15px; padding: 20px; text-align: center; }
+                h1 { color: #d63384; margin-bottom: 5px; }
+                p { font-size: 18px; margin: 10px 0; }
+                ul { text-align: left; display: inline-block; font-size: 16px; }
+            </style>
+        </head>
+        <body>
+            <div class="card">
+                <h1>✨ Cita Confirmada ✨</h1>
+                <p><strong>🍔 Comida:</strong> ${elecciones.comida || 'Por definir'}</p>
+                <p><strong>📅 Día:</strong> ${elecciones.fecha || 'Por definir'}</p>
+                <p><strong>⏰ Hora:</strong> ${elecciones.hora || 'Por definir'}</p>
+                <p><strong>🎯 Actividades:</strong></p>
+                <ul>${actividadesHTML}</ul>
+            </div>
+            <script>
+                window.onload = function() {
+                    window.print();
+                    window.close();
+                };
+            </script>
+        </body>
+        </html>
+    `);
+    
+    ventanaImpresion.document.close();
 }

@@ -1,7 +1,7 @@
 const pasospagina = [
     {
         paso: 1,
-        titulo: "Will you go on a date with me? 🌸✨",
+        titulo: "Quieres salir conmigo ? 🌸✨",
         subtitulo: "Tengo una pregunta especial para ti...",
         tipo: "simple",
         botonTexto: "YES ♥"

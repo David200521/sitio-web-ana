@@ -7,7 +7,7 @@ let elecciones = {
 };
 
 // Sustituye con tu número en formato internacional sin el signo "+"
-const MI_NUMERO_WHATSAPP = "584120000000"; 
+const MI_NUMERO_WHATSAPP = "584144758167"; 
 
 function cargarPaso(index) {
     const contenedor = document.getElementById('card-container');
