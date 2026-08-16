@@ -4,103 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para Ana</title>
-    <!-- Librería para el efecto de confeti -->
+    <!-- Estilos externos -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Librería de confeti -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        .card {
-            background: #ffffff;
-            padding: 2.5rem 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            max-width: 420px;
-            width: 100%;
-            text-align: center;
-            animation: fadeIn 1s ease-in-out;
-        }
-        h1 {
-            color: #d63384;
-            font-size: 2rem;
-            margin-bottom: 0.8rem;
-        }
-        p {
-            color: #555;
-            font-size: 1.05rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-        .btn {
-            background-color: #d63384;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            font-size: 1rem;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: transform 0.2s, background-color 0.2s;
-        }
-        .btn:hover {
-            background-color: #b8256f;
-            transform: scale(1.05);
-        }
-        .mensaje-oculto {
-            display: none;
-            margin-top: 1.5rem;
-            padding: 1rem;
-            background-color: #ffe6f2;
-            border-radius: 12px;
-            color: #99004d;
-            font-weight: 500;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
 </head>
 <body>
+
     <div class="card">
-        <h1>¡Hola, Ana! ✨</h1>
-        <p>Bienvenida a tu espacio web personal. Presiona el botón para descubrir un detalle especial.</p>
-        
-        <button class="btn" onclick="mostrarDetalle()">Presiona aquí</button>
-        
-        <div id="extra" class="mensaje-oculto">
-            ¡Espero que disfrutes mucho de este espacio hecho para ti! 🌟
+        <div id="paso1" class="pantalla activa">
+            <h1>¡Hola, Ana! ✨</h1>
+            <p>Bienvenida a tu espacio web. Tengo una pregunta especial para ti.</p>
+            <button class="btn" onclick="siguientePaso()">Ver pregunta</button>
+        </div>
+
+        <div id="paso2" class="pantalla">
+            <h1>¿Te gustaría salir conmigo? ☕✨</h1>
+            <p>Elige una opción:</p>
+            <div class="btn-group" id="contenedor-botones">
+                <button class="btn" onclick="respuestaSi()">¡Sí, claro!</button>
+                <button class="btn btn-no" id="btnNo" onmouseover="moverBotonNo()" onclick="moverBotonNo()">No</button>
+            </div>
+        </div>
+
+        <div id="paso3" class="pantalla">
+            <h1>¡Genial! 🎉</h1>
+            <p>¡Sabía que dirías que sí! Coordinemos el día y la hora. 😊</p>
         </div>
     </div>
 
-    <script>
-        function mostrarDetalle() {
-            const msg = document.getElementById('extra');
-            const estaOculto = msg.style.display === 'none' || msg.style.display === '';
-            
-            if (estaOculto) {
-                msg.style.display = 'block';
-                // Lanza la animación de confeti
-                confetti({
-                    particleCount: 80,
-                    spread: 70,
-                    origin: { y: 0.6 }
-                });
-            } else {
-                msg.style.display = 'none';
-            }
-        }
-    </script>
+    <!-- Script externo -->
+    <script src="js/script.js"></script>
 </body>
 </html>
