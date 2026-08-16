@@ -1,17 +1,22 @@
+// Si estás cargando los datos desde js/datos.js
 let pasoActual = 0;
 
 function cargarPaso(index) {
     const contenedor = document.getElementById('card-container');
     const datos = pasospagina[index];
 
+    if (!contenedor || !datos) return;
+
     if (datos.tipo === "simple") {
         contenedor.innerHTML = `
             <div class="snoopy-container">
-                <img src="snoopy.jpg" alt="Snoopy" id="snoopy-img">
+                <img src="snoopy.png" alt="Snoopy" id="snoopy-img">
             </div>
             <h1>${datos.titulo}</h1>
             <p>${datos.subtitulo}</p>
-            <button class="btn" onclick="siguiente()">${datos.botonTexto}</button>
+            <div class="btn-group">
+                <button class="btn" onclick="siguiente()">${datos.botonTexto}</button>
+            </div>
         `;
     } else if (datos.tipo === "comida") {
         const opcionesHTML = datos.opciones.map(item => `
@@ -25,7 +30,9 @@ function cargarPaso(index) {
             <h1>${datos.titulo}</h1>
             <p>${datos.subtitulo}</p>
             <div class="food-grid">${opcionesHTML}</div>
-            <button class="btn" onclick="siguiente()">${datos.botonTexto}</button>
+            <div class="btn-group">
+                <button class="btn" onclick="siguiente()">${datos.botonTexto}</button>
+            </div>
         `;
     } else if (datos.tipo === "final") {
         contenedor.innerHTML = `
@@ -33,11 +40,13 @@ function cargarPaso(index) {
             <p>${datos.subtitulo}</p>
         `;
         
-        confetti({
-            particleCount: 150,
-            spread: 100,
-            origin: { y: 0.6 }
-        });
+        if (typeof confetti === 'function') {
+            confetti({
+                particleCount: 150,
+                spread: 100,
+                origin: { y: 0.6 }
+            });
+        }
     }
 }
 
@@ -48,7 +57,6 @@ function siguiente() {
     }
 }
 
-// Cargar el primer paso al abrir la página
 document.addEventListener('DOMContentLoaded', () => {
     cargarPaso(0);
 });
