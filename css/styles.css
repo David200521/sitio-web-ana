@@ -5,9 +5,8 @@
 }
 
 body {
-    body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: url('../fondo\ minecraft.png.png'); /* O 'fondo.png' si está en la raíz */
+    background-image: url('../fondo-minecraft.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -17,7 +16,6 @@ body {
     align-items: center;
     padding: 20px;
     overflow: hidden;
-}
 }
 
 .card {
@@ -29,10 +27,10 @@ body {
     width: 100%;
     text-align: center;
     position: relative;
+    margin: auto;
     animation: fadeIn 0.8s ease-in-out;
 }
 
-/* Contenedor e imagen de Snoopy ajustados */
 .snoopy-container {
     width: 100%;
     max-width: 160px;
@@ -62,7 +60,6 @@ p {
     margin-bottom: 1.5rem;
 }
 
-/* Grilla de opciones de comida */
 .food-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -102,7 +99,6 @@ p {
     font-weight: 600;
 }
 
-/* Botones y controles */
 .btn-group {
     display: flex;
     justify-content: center;
@@ -128,19 +124,6 @@ p {
 .btn:hover {
     background-color: #b8256f;
     transform: scale(1.05);
-}
-
-.btn-no {
-    background-color: #6c757d;
-    position: absolute;
-}
-
-.pantalla {
-    display: none;
-}
-
-.pantalla.activa {
-    display: block;
 }
 
 @keyframes fadeIn {

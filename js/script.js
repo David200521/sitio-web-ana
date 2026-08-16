@@ -10,7 +10,7 @@ function cargarPaso(index) {
     if (datos.tipo === "simple") {
         contenedor.innerHTML = `
             <div class="snoopy-container">
-                <img src="snoopy.png" alt="Snoopy" id="snoopy-img">
+                <img src="./snoopy.jpg" alt="Snoopy" id="snoopy-img">
             </div>
             <h1>${datos.titulo}</h1>
             <p>${datos.subtitulo}</p>
