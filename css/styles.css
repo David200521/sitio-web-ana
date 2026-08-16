@@ -5,9 +5,9 @@
 }
 
 body {
+    body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* Fondo dinámico de Minecraft (campo de lirios) */
-    background-image: url('https://i.imgur.com/gS9F1Sj.png'); 
+    background-image: url('../fondo\ minecraft.png.png'); /* O 'fondo.png' si está en la raíz */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -17,6 +17,7 @@ body {
     align-items: center;
     padding: 20px;
     overflow: hidden;
+}
 }
 
 .card {
