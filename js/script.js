@@ -1,32 +1,54 @@
-function siguientePaso() {
-    document.getElementById('paso1').classList.remove('activa');
-    document.getElementById('paso2').classList.add('activa');
-    
-    const btnNo = document.getElementById('btnNo');
-    btnNo.style.right = '30px';
+let pasoActual = 0;
+
+function cargarPaso(index) {
+    const contenedor = document.getElementById('card-container');
+    const datos = pasospagina[index];
+
+    if (datos.tipo === "simple") {
+        contenedor.innerHTML = `
+            <div class="snoopy-container">
+                <img src="snoopy.jpg" alt="Snoopy" id="snoopy-img">
+            </div>
+            <h1>${datos.titulo}</h1>
+            <p>${datos.subtitulo}</p>
+            <button class="btn" onclick="siguiente()">${datos.botonTexto}</button>
+        `;
+    } else if (datos.tipo === "comida") {
+        const opcionesHTML = datos.opciones.map(item => `
+            <div class="food-item ${item.destacado ? 'destacado' : ''}">
+                <span class="emoji">${item.emoji}</span>
+                <span class="food-name">${item.nombre}</span>
+            </div>
+        `).join('');
+
+        contenedor.innerHTML = `
+            <h1>${datos.titulo}</h1>
+            <p>${datos.subtitulo}</p>
+            <div class="food-grid">${opcionesHTML}</div>
+            <button class="btn" onclick="siguiente()">${datos.botonTexto}</button>
+        `;
+    } else if (datos.tipo === "final") {
+        contenedor.innerHTML = `
+            <h1>${datos.titulo}</h1>
+            <p>${datos.subtitulo}</p>
+        `;
+        
+        confetti({
+            particleCount: 150,
+            spread: 100,
+            origin: { y: 0.6 }
+        });
+    }
 }
 
-function moverBotonNo() {
-    const btnNo = document.getElementById('btnNo');
-    const card = document.querySelector('.card');
-    
-    const maxX = card.clientWidth - btnNo.clientWidth - 40;
-    const maxY = card.clientHeight - btnNo.clientHeight - 40;
-    
-    const randomX = Math.floor(Math.random() * maxX);
-    const randomY = Math.floor(Math.random() * maxY);
-    
-    btnNo.style.left = randomX + 'px';
-    btnNo.style.top = randomY + 'px';
+function siguiente() {
+    pasoActual++;
+    if (pasoActual < pasospagina.length) {
+        cargarPaso(pasoActual);
+    }
 }
 
-function respuestaSi() {
-    document.getElementById('paso2').classList.remove('activa');
-    document.getElementById('paso3').classList.add('activa');
-    
-    confetti({
-        particleCount: 120,
-        spread: 80,
-        origin: { y: 0.6 }
-    });
-}
+// Cargar el primer paso al abrir la página
+document.addEventListener('DOMContentLoaded', () => {
+    cargarPaso(0);
+});

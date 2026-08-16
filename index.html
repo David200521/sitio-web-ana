@@ -4,36 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para Ana</title>
-    <!-- Estilos externos -->
     <link rel="stylesheet" href="css/styles.css">
-    <!-- Librería de confeti -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
 
-    <div class="card">
-        <div id="paso1" class="pantalla activa">
-            <h1>¡Hola, Ana! ✨</h1>
-            <p>Bienvenida a tu espacio web. Tengo una pregunta especial para ti.</p>
-            <button class="btn" onclick="siguientePaso()">Ver pregunta</button>
-        </div>
-
-        <div id="paso2" class="pantalla">
-            <h1>¿Te gustaría salir conmigo? ☕✨</h1>
-            <p>Elige una opción:</p>
-            <div class="btn-group" id="contenedor-botones">
-                <button class="btn" onclick="respuestaSi()">¡Sí, claro!</button>
-                <button class="btn btn-no" id="btnNo" onmouseover="moverBotonNo()" onclick="moverBotonNo()">No</button>
-            </div>
-        </div>
-
-        <div id="paso3" class="pantalla">
-            <h1>¡Genial! 🎉</h1>
-            <p>¡Sabía que dirías que sí! Coordinemos el día y la hora. 😊</p>
-        </div>
+    <div class="card" id="card-container">
+        <!-- El contenido se cargará dinámicamente con JavaScript -->
     </div>
 
-    <!-- Script externo -->
+    <!-- Cargar primero los datos y luego la lógica -->
+    <script src="js/datos.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
