@@ -1,15 +1,15 @@
 const pasospagina = [
     {
         paso: 1,
-        titulo: "Quieres salir conmigo ? 🌸✨",
-        subtitulo: "Tengo una pregunta especial para ti...",
+        titulo: "Quieres salir conmigo ? 🙈",
+        subtitulo: "Tengo una pregunta especial para ti Ana ",
         tipo: "simple",
         botonTexto: "YES ♥"
     },
     {
         paso: 2,
-        titulo: "What are we feeling? 🍽️✨",
-        subtitulo: "pick your vibe",
+        titulo: "Que te gustaria comer ? 🍽️✨",
+        subtitulo: "Tus sitios favoritos",
         tipo: "comida",
         opciones: [
             { emoji: "🍕", nombre: "Pizza" },
@@ -23,15 +23,15 @@ const pasospagina = [
     },
     {
         paso: 3,
-        titulo: "So... when are you free? 📅✨",
+        titulo: "Elige el dia de nuestra cita 📅✨",
         subtitulo: "Elige el día y la hora",
         tipo: "fecha_hora",
         botonTexto: "Siguiente"
     },
     {
         paso: 4,
-        titulo: "What are we doing? 🎯✨",
-        subtitulo: "Puedes elegir varias actividades",
+        titulo: "Que te gustraia hacer ? 🎯✨",
+        subtitulo: "Puedes elegir varias actividades tus favoritas",
         tipo: "actividades",
         opciones: [
             { emoji: "🕹️", nombre: "Ir a las maquinitas / Play" },
@@ -39,7 +39,8 @@ const pasospagina = [
             { emoji: "🍪", nombre: "Ir a Quiero Galleta" },
             { emoji: "🎬", nombre: "Ir al cine" },
             { emoji: "🦁", nombre: "Ir al zoológico" },
-            { emoji: "🎨", nombre: "Pintar o estar en casa" }
+            { emoji: "🎨", nombre: "Pintar" },
+            { emoji: "🏠", nombre: "Estar en Casa" }
         ],
         botonTexto: "Confirmar cita ♥"
     },
